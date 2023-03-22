@@ -72,12 +72,9 @@ fun LemonadeApp() {
                         modifier = Modifier
                             .wrapContentSize()
                             .clickable {
-                                while (tapCounter > 0) {
-                                    tapCounter--
-                                    currentStep =2
-                                }
-                                if (tapCounter == 0) {
-                                    currentStep = 3
+                                tapCounter--
+                                if (tapCounter==0){
+                                    currentStep =3
                                 }
 
                             })
