@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LemonadeApp() {
     var currentStep by remember { mutableStateOf(1) }
-    var SqueezeCounter by remember { mutableStateOf(0) }
+    var tapCounter by remember { mutableStateOf(0) }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.background
@@ -53,6 +53,7 @@ fun LemonadeApp() {
                             .wrapContentSize()
                             .clickable {
                                 currentStep = 2
+                                tapCounter = (2..6).random()
                             })
                 }
             }
@@ -71,7 +72,14 @@ fun LemonadeApp() {
                         modifier = Modifier
                             .wrapContentSize()
                             .clickable {
-                                currentStep = 3
+                                while (tapCounter > 0) {
+                                    tapCounter--
+                                    currentStep =2
+                                }
+                                if (tapCounter == 0) {
+                                    currentStep = 3
+                                }
+
                             })
                 }
             }
@@ -91,6 +99,25 @@ fun LemonadeApp() {
                             .wrapContentSize()
                             .clickable {
                                 currentStep = 4
+                            })
+                }
+            }
+
+            4 -> {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Text(text = stringResource(R.string.Empty_glass))
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Image(
+                        painter = painterResource(R.drawable.lemon_restart),
+                        contentDescription = stringResource(R.string.Empty_glass),
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .clickable {
+                                currentStep = 1
                             })
                 }
             }
