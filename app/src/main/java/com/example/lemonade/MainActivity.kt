@@ -30,11 +30,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun LemonadeImages(){
-
-}
-
-@Composable
 fun LemonadeApp() {
     var currentStep by remember { mutableStateOf(1) }
     var SqueezeCounter by remember { mutableStateOf(0) }
@@ -77,6 +72,25 @@ fun LemonadeApp() {
                             .wrapContentSize()
                             .clickable {
                                 currentStep = 3
+                            })
+                }
+            }
+
+            3 -> {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Text(text = stringResource(R.string.Glass_of_lemonade))
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Image(
+                        painter = painterResource(R.drawable.lemon_drink),
+                        contentDescription = stringResource(R.string.Glass_of_lemonade),
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .clickable {
+                                currentStep = 4
                             })
                 }
             }
