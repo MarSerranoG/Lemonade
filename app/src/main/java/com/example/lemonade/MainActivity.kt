@@ -62,6 +62,25 @@ fun LemonadeApp() {
                 }
             }
 
+            2 -> {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Text(text = stringResource(R.string.Lemon))
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Image(
+                        painter = painterResource(R.drawable.lemon_squeeze),
+                        contentDescription = stringResource(R.string.Lemon),
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .clickable {
+                                currentStep = 3
+                            })
+                }
+            }
+
         }
     }
 }
